@@ -52,7 +52,7 @@ class DrawingUtil {
         const sf3 : number = ScaleUtil.divideScale(sf, 2, parts)
         context.save()
         context.translate(w / 2, h / 2)
-        DrawingUtil.drawLine(context, 0, h / 2, 0, h / 2 * (1 - sf2))
+        DrawingUtil.drawLine(context, 0, h / 2, 0, h / 2 * (1 - (sf2 - sf3)))
         DrawingUtil.drawCircle(context, -w / 2 + r + (w / 2 - r) * sf2,  (-h /2 + r) * sf3, r * sf1)
         context.restore()
     }
