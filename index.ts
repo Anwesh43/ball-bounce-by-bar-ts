@@ -205,3 +205,25 @@ class BallBounceByLine {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    animator : Animator = new Animator()
+    bbl : BallBounceByLine = new BallBounceByLine()
+    
+    render(context : CanvasRenderingContext2D) {
+        this.bbl.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.bbl.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.bbl.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
